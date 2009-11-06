@@ -11,8 +11,8 @@
 NanoKontrol {
 
 	var faders, knobs, topBts, bottomBts, transportBts;
-	var <controllers;
-	
+	var controllers;
+
 	
 	*new{
 		^super.new.initNanoKontrol;
@@ -28,8 +28,6 @@ NanoKontrol {
 			\fader5 -> NKController.new(6),
 			\fader6 -> NKController.new(8),
 			\fader7 -> NKController.new(9),
-			\fader8 -> NKController.new(12),
-			\fader9 -> NKController.new(13)
 		];
 		
 		knobs = IdentityDictionary[
@@ -68,18 +66,23 @@ NanoKontrol {
 			\bottomBt9 -> NKButton.new(41)
 		];
 		
-		transportBts= IdentityDictionary[
+		transportBts = IdentityDictionary[
 			\playBt   -> NKButton.new(45),
 			\stopBt   -> NKButton.new(46),
-			\rectBt   -> NKButton.new(44),
+			\recBt   -> NKButton.new(44),
 			\rewindBt -> NKButton.new(47),
 			\ffwBt    -> NKButton.new(48),
 			\loopBt   -> NKButton.new(49)
 		];	
 	
 		controllers = IdentityDictionary.new;
-		controllers.putAll(faders, knobs, topBts, bottomBts, transportBts);
-		
+		controllers.putAll(
+			faders,
+			knobs,
+			topBts,
+			bottomBts,
+			transportBts
+		);
 	}
 	
 	doesNotUnderstand { arg selector ... args;	
@@ -87,6 +90,21 @@ NanoKontrol {
 		^ controller ?? {super.doesNotUnderstand( selector, args)};
 	}
 	
+	fader {arg n;
+		^controllers.at(("fader" ++ n).asSymbol);
+	}
+
+	knob {arg n;
+		^controllers.at(("knob" ++ n).asSymbol);
+	}
+
+	topBt {arg n;
+		^controllers.at(("topBt" ++ n).asSymbol);
+	}
+
+	bottomBt {arg n;
+		^controllers.at(("bottomBt" ++ n).asSymbol);
+	}
 }
 
 NKController {
