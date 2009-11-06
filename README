@@ -21,11 +21,27 @@ n.topBt1.onRelease = { "top button 1 released".postln;}
 
 n.knob1.onChanged  = {|vel| "knob 1 changed".postln; v.postln;}
 
+or equivalent:
+
+n.topBt(1).onPress   = { "top button 1 pressed".postln;}
+
+n.topBt(1).onRelease = { "top button 1 released".postln;}
+
+n.knob(1).onChanged  = {|vel| "knob 1 changed".postln; v.postln;}
+
 // controller names ---------------------------
 fader1...9
 knob1...9
 topBt1...9
 bottomBt1...9
+
+// controller access methods ------------------
+fader(n)
+knob(n)
+topBt(n)
+bottomBt(n)
+// 1 <= n <= 9
+
 
 //transport buttons ---------------------------
 playBt, stopBt, recBt, loopBt, loopBt, rewindBt, ffwBt
