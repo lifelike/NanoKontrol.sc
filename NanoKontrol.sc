@@ -28,6 +28,8 @@ NanoKontrol {
 			\fader5 -> NKController.new(6),
 			\fader6 -> NKController.new(8),
 			\fader7 -> NKController.new(9),
+			\fader8 -> NKController.new(12),
+			\fader9 -> NKController.new(13),
 		];
 		
 		knobs = IdentityDictionary[
